@@ -69,12 +69,15 @@ public class FingerprintHandler implements Executor, DialogInterface.OnClickList
                 mCallback.hardwareNotAvailable();
                 return;
             }
+            if (!fingerprintManager.hasEnrolledFingerprints()) {
+                mCallback.onAuthenticationHelp(-1, "No fingerprints are enrolled");
+                return;
+            }
             BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(context)
                     .setTitle("Fingerprint")
                     .setSubtitle("Testing Fingerprint")
                     .setDescription("Please touch your biometrics")
                     .setNegativeButton("Cancel", this, this).build();
-
             mCallback.onSetupComplete();
             biometricPrompt.authenticate(cancellationSignal, this, new BiometricPrompt.AuthenticationCallback() {
                 @Override
@@ -224,7 +227,10 @@ public class FingerprintHandler implements Executor, DialogInterface.OnClickList
 
     @Override
     public void execute(@NonNull Runnable command) {
-        mCallback.onAuthenticationSucceeded();
+//        mCallback.onAuthenticationSucceeded();
+//        if (mCallback != null) {
+//            mCallback.onAuthenticationCancelled();
+//        }
     }
 
     @Override

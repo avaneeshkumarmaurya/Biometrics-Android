@@ -1,5 +1,6 @@
 package com.notbytes.biometrics_android;
 
+import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 
 public class FingerprintActivity extends AppCompatActivity implements View.OnClickListener, FingerprintAuthenticationCallback {
+    private static final int REQUEST_FINGERPRINT_PERMISSION = 344;
     private TextView textView;
 
     @Override
@@ -17,7 +19,7 @@ public class FingerprintActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_fingerprint);
         textView = findViewById(R.id.tv_desc);
         findViewById(R.id.btn_authenticate).setOnClickListener(this);
-
+//        requestPermissions(new String[]{Manifest.permission.USE_BIOMETRIC}, REQUEST_FINGERPRINT_PERMISSION);
     }
 
     @Override
