@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Biometrics-Android-P</string>
+    <string name="title_fingerprint">Fingerprint Signin</string>
+    <string name="place_fingerprint_help">Please place your finger at fingerprint sensor</string>
+</resources>
